@@ -1142,6 +1142,7 @@ void statement() :
         if(preference != null) {
           	// parsing a simple preference
         	fireParseEvent(preference);
+        	fireParseEvent(new ConjunctionEndsEvent(ParserListener.OBJECT_TYPE.PREFERENCE));
         } else { 
 	        current_object = ParserListener.OBJECT_TYPE.FACT;
 	        if (pending_events != null)
@@ -1162,6 +1163,7 @@ void statement() :
 	          if(preference != null) {
 	            // it's a preference rule
 				current_object = ParserListener.OBJECT_TYPE.PREFERENCE_RULE;
+				fireParseEvent(preference);
 	          } else {
 	            // it's a strict rule 
 		        current_object = ParserListener.OBJECT_TYPE.RULE;
@@ -1180,6 +1182,7 @@ void statement() :
 	          if(preference != null) {
 	            // it's a preference rule
 				current_object = ParserListener.OBJECT_TYPE.PREFERENCE_RULE;
+				fireParseEvent(preference);
 	          } else {
 	            // it's a strict rule 
 		        current_object = ParserListener.OBJECT_TYPE.RULE;

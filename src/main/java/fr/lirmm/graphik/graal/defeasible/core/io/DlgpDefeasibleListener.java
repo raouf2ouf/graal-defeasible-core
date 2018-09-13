@@ -185,7 +185,6 @@ class DlgpDefeasibleListener implements ParserListener {
 		default: break;
 		}
 		this.pref = preference;
-		this.set.write(preference);
 	}
 	
 	/**
@@ -238,6 +237,10 @@ class DlgpDefeasibleListener implements ParserListener {
 				// We are parsing the preference of the body of the rule
 				this.createRule(this.label, this.atomSet, this.atomSet2, objectType);
 			}
+			break;
+		
+		case PREFERENCE:
+			this.set.write(this.pref);
 			break;
 			
 		case FACT:

@@ -730,6 +730,7 @@ public class DLGP2Parser implements DLGP2ParserConstants {
         if(preference != null) {
                 // parsing a simple preference
                 fireParseEvent(preference);
+                fireParseEvent(new ConjunctionEndsEvent(ParserListener.OBJECT_TYPE.PREFERENCE));
         } else {
                 current_object = ParserListener.OBJECT_TYPE.FACT;
                 if (pending_events != null)
@@ -747,6 +748,7 @@ public class DLGP2Parser implements DLGP2ParserConstants {
                   if(preference != null) {
                     // it's a preference rule
                                 current_object = ParserListener.OBJECT_TYPE.PREFERENCE_RULE;
+                                fireParseEvent(preference);
                   } else {
                     // it's a strict rule 
                         current_object = ParserListener.OBJECT_TYPE.RULE;
@@ -764,6 +766,7 @@ public class DLGP2Parser implements DLGP2ParserConstants {
                   if(preference != null) {
                     // it's a preference rule
                                 current_object = ParserListener.OBJECT_TYPE.PREFERENCE_RULE;
+                                fireParseEvent(preference);
                   } else {
                     // it's a strict rule 
                         current_object = ParserListener.OBJECT_TYPE.RULE;
@@ -1533,11 +1536,6 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3_61() {
-    if (jj_3R_30()) return true;
-    return false;
-  }
-
   private boolean jj_3_60() {
     if (jj_3R_21()) return true;
     return false;
@@ -1550,6 +1548,11 @@ public class DLGP2Parser implements DLGP2ParserConstants {
 
   private boolean jj_3_59() {
     if (jj_scan_token(L_IDENT)) return true;
+    return false;
+  }
+
+  private boolean jj_3_44() {
+    if (jj_3R_25()) return true;
     return false;
   }
 
@@ -1575,18 +1578,8 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3_44() {
-    if (jj_3R_25()) return true;
-    return false;
-  }
-
   private boolean jj_3_58() {
     if (jj_scan_token(U_IDENT)) return true;
-    return false;
-  }
-
-  private boolean jj_3_24() {
-    if (jj_3R_19()) return true;
     return false;
   }
 
@@ -1606,13 +1599,18 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3_22() {
-    if (jj_3R_18()) return true;
+  private boolean jj_3_24() {
+    if (jj_3R_19()) return true;
     return false;
   }
 
   private boolean jj_3_43() {
     if (jj_3R_24()) return true;
+    return false;
+  }
+
+  private boolean jj_3_22() {
+    if (jj_3R_18()) return true;
     return false;
   }
 
@@ -1657,24 +1655,24 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3_25() {
-    if (jj_3R_20()) return true;
-    return false;
-  }
-
   private boolean jj_3_39() {
     if (jj_scan_token(DOUBLE_CARET)) return true;
     if (jj_3R_21()) return true;
     return false;
   }
 
-  private boolean jj_3_21() {
-    if (jj_3R_17()) return true;
+  private boolean jj_3_25() {
+    if (jj_3R_20()) return true;
     return false;
   }
 
   private boolean jj_3_56() {
     if (jj_3R_21()) return true;
+    return false;
+  }
+
+  private boolean jj_3_21() {
+    if (jj_3R_17()) return true;
     return false;
   }
 
@@ -1693,14 +1691,25 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
+  private boolean jj_3_55() {
+    if (jj_scan_token(L_IDENT)) return true;
+    return false;
+  }
+
   private boolean jj_3R_9() {
     if (jj_scan_token(PREFIX)) return true;
     if (jj_scan_token(PNAME_NS)) return true;
     return false;
   }
 
-  private boolean jj_3_55() {
-    if (jj_scan_token(L_IDENT)) return true;
+  private boolean jj_3R_28() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3_55()) {
+    jj_scanpos = xsp;
+    if (jj_3_56()) return true;
+    }
+    if (jj_scan_token(OPENPAR)) return true;
     return false;
   }
 
@@ -1719,17 +1728,6 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     }
     }
     }
-    return false;
-  }
-
-  private boolean jj_3R_28() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3_55()) {
-    jj_scanpos = xsp;
-    if (jj_3_56()) return true;
-    }
-    if (jj_scan_token(OPENPAR)) return true;
     return false;
   }
 
@@ -1760,24 +1758,18 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_13() {
-    if (jj_scan_token(FULLIRI)) return true;
-    return false;
-  }
-
   private boolean jj_3_54() {
     if (jj_3R_29()) return true;
     return false;
   }
 
-  private boolean jj_3_53() {
-    if (jj_3R_28()) return true;
+  private boolean jj_3R_13() {
+    if (jj_scan_token(FULLIRI)) return true;
     return false;
   }
 
-  private boolean jj_3_20() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_16()) return true;
+  private boolean jj_3_53() {
+    if (jj_3R_28()) return true;
     return false;
   }
 
@@ -1796,18 +1788,24 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
+  private boolean jj_3_20() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_16()) return true;
+    return false;
+  }
+
   private boolean jj_3R_12() {
     if (jj_scan_token(PNAME_LN)) return true;
     return false;
   }
 
-  private boolean jj_3R_19() {
-    if (jj_3R_16()) return true;
+  private boolean jj_3_34() {
+    if (jj_scan_token(62)) return true;
     return false;
   }
 
-  private boolean jj_3_34() {
-    if (jj_scan_token(62)) return true;
+  private boolean jj_3R_19() {
+    if (jj_3R_16()) return true;
     return false;
   }
 
@@ -1821,16 +1819,6 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_21() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3_6()) {
-    jj_scanpos = xsp;
-    if (jj_3_7()) return true;
-    }
-    return false;
-  }
-
   private boolean jj_3_52() {
     if (jj_scan_token(COMMA)) return true;
     if (jj_3R_27()) return true;
@@ -1839,6 +1827,16 @@ public class DLGP2Parser implements DLGP2ParserConstants {
 
   private boolean jj_3_33() {
     if (jj_scan_token(61)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_21() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3_6()) {
+    jj_scanpos = xsp;
+    if (jj_3_7()) return true;
+    }
     return false;
   }
 
@@ -1893,13 +1891,13 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_17() {
-    if (jj_scan_token(NAME_OBJECT)) return true;
+  private boolean jj_3_51() {
+    if (jj_scan_token(LONG_STRING)) return true;
     return false;
   }
 
-  private boolean jj_3_51() {
-    if (jj_scan_token(LONG_STRING)) return true;
+  private boolean jj_3R_17() {
+    if (jj_scan_token(NAME_OBJECT)) return true;
     return false;
   }
 
@@ -1958,11 +1956,6 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3_15() {
-    if (jj_scan_token(SECTION_FACTS)) return true;
-    return false;
-  }
-
   private boolean jj_3_48() {
     if (jj_scan_token(TRUE)) return true;
     return false;
@@ -1975,6 +1968,11 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     jj_scanpos = xsp;
     if (jj_3_49()) return true;
     }
+    return false;
+  }
+
+  private boolean jj_3_15() {
+    if (jj_scan_token(SECTION_FACTS)) return true;
     return false;
   }
 
@@ -2078,14 +2076,14 @@ public class DLGP2Parser implements DLGP2ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_11() {
-    if (jj_scan_token(UNA)) return true;
-    return false;
-  }
-
   private boolean jj_3_63() {
     if (jj_scan_token(65)) return true;
     if (jj_3R_27()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_11() {
+    if (jj_scan_token(UNA)) return true;
     return false;
   }
 
@@ -2128,6 +2126,11 @@ public class DLGP2Parser implements DLGP2ParserConstants {
 
   private boolean jj_3_36() {
     if (jj_scan_token(DOT)) return true;
+    return false;
+  }
+
+  private boolean jj_3_61() {
+    if (jj_3R_30()) return true;
     return false;
   }
 
