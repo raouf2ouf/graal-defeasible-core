@@ -49,7 +49,7 @@ public class FlexibleAtom extends DefaultAtom {
 
 	/**
 	 * Creates a Flexible atom from another atom
-	 * @param atom
+	 * @param atom an atom
 	 */
 	public FlexibleAtom(Atom atom) {
 		super(atom);
@@ -67,7 +67,7 @@ public class FlexibleAtom extends DefaultAtom {
 
 	/**
 	 * Displays the atom without the predicate arity
-	 * @param sb
+	 * @param sb a string builder
 	 */
 	@Override
 	public void appendTo(StringBuilder sb) {

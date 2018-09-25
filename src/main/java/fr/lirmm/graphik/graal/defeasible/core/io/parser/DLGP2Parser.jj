@@ -43,7 +43,6 @@ public class DLGP2Parser
 
   protected ArrayList < String > directives = new ArrayList < String > ();
 
-  /** The listener list. */
   protected EventListenerList parserListenerList = new EventListenerList();
 
   protected TermFactory termFactory;
@@ -71,11 +70,6 @@ public class DLGP2Parser
     fireParseEvent(new DirectiveEvent(text));
   }
 
-  /**
-	 * Adds the parser listener.
-	 * 
-	 * @param l the listener
-	 */
   public void addParserListener(ParserListener l)
   {
     parserListenerList.add(ParserListener.class, l);
@@ -206,21 +200,11 @@ public class DLGP2Parser
     return sb.toString();
   }
 
-  /**
-	 * Removes the parser listener.
-	 * 
-	 * @param l the listener
-	 */
   public void removeParserListener(ParserListener l)
   {
     parserListenerList.remove(ParserListener.class, l);
   }
 
-  /**
-	 * Gets the parser listeners.
-	 * 
-	 * @return the parser listeners
-	 */
   public ParserListener [] getParserListeners()
   {
     return (ParserListener []) parserListenerList
@@ -1019,11 +1003,6 @@ void section() :
   )*
 }
 
-/**
-* Parse the name of the new object
-* all OBJECT_TYPE can optionally be named
-*
-**/
 String statement_name() :
 {
 }
@@ -1036,11 +1015,6 @@ String statement_name() :
   }
 }
 
-/**
-*	this method parses a list of atoms
-*   and optionally return a list of pending
-*   actions when OBJECT_TYPE is UNKNOWN
-**/
 ArrayList < ParseEvent > conjunction(String name) :
 {
   ArrayList < ParseEvent > pending_events = null;

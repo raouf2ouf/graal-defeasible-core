@@ -35,8 +35,8 @@ public abstract class Preference extends FlexibleAtom {
 	}
 	
 	/**
-	 * Returns a string in the form sup > inf
-	 * @return string sup > inf
+	 * Returns a string in the form sup  inf
+	 * @return string sup  inf
 	 */
 	public String stringify() {
 		String str = this.getSuperior() + " > " + this.getInferior();

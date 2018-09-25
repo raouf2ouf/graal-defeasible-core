@@ -15,7 +15,7 @@ public interface TermFactory {
 	/**
 	 * Creates a new Term object.
 	 *
-	 * @param dt the dt
+	 * @param datatype the datatype
 	 * @param stringValue the string value
 	 * @param langTag the lang tag
 	 * @return the object

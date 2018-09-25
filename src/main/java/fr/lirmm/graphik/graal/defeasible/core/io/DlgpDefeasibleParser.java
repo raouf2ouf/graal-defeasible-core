@@ -81,7 +81,7 @@ import fr.lirmm.graphik.util.stream.QueueStream;
 
 /**
  * 
- * @author Clément Sipieter (INRIA) <clement@6pi.fr>
+ * @author Clément Sipieter
  * @author Abdelraouf Hecham
  * 
  */
@@ -102,7 +102,7 @@ public final class DlgpDefeasibleParser extends AbstractCloseableIterator<Object
 	/**
 	 * Constructor for parsing from the given reader.
 	 * 
-	 * @param reader
+	 * @param reader a reader
 	 */
 	public DlgpDefeasibleParser(Reader reader) {
 		this.reader = reader;
@@ -120,8 +120,8 @@ public final class DlgpDefeasibleParser extends AbstractCloseableIterator<Object
 	/**
 	 * Constructor for parsing from the given file.
 	 * 
-	 * @param file
-	 * @throws FileNotFoundException
+	 * @param file a file
+	 * @throws FileNotFoundException exception if file is not found
 	 */
 	public DlgpDefeasibleParser(File file) throws FileNotFoundException {
 		this(new FileReader(file));
@@ -130,7 +130,7 @@ public final class DlgpDefeasibleParser extends AbstractCloseableIterator<Object
 	/**
 	 * Constructor for parsing the content of the string s as DLGP content.
 	 * 
-	 * @param s
+	 * @param s a string to read from
 	 */
 	public DlgpDefeasibleParser(String s) {
 		this(new StringReader(s));
@@ -139,7 +139,7 @@ public final class DlgpDefeasibleParser extends AbstractCloseableIterator<Object
 	/**
 	 * Constructor for parsing the given InputStream.
 	 * 
-	 * @param in
+	 * @param in the input stream
 	 */
 	public DlgpDefeasibleParser(InputStream in) {
 		this(new InputStreamReader(in));

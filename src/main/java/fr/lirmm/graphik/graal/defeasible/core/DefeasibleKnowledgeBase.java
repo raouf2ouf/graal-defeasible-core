@@ -162,6 +162,7 @@ public class DefeasibleKnowledgeBase {
 	 * Parses and adds a fact to the knoweldge base
 	 * @param a a dlgp string representing the atom
 	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addFact(String a) throws ParseException, AtomSetException {
 		this.addFact((FlexibleAtom) DlgpDefeasibleParser.parseAtom(a));
@@ -177,7 +178,9 @@ public class DefeasibleKnowledgeBase {
 	}
 	/**
 	 * Parses and adds a preference on rules to the set of preferences
-	 * @param pref a string representing a preference on rules
+	 * @param s a string representing a preference on rules
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addRulePreference(String s) throws ParseException, AtomSetException {
 		this.addRulePreference(DlgpDefeasibleParser.parseRulePreference(s));
@@ -192,6 +195,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Parses and adds a preference on alternatives to the set of preferences
 	 * @param s a string representing preference on alternatives
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addAlternativePreference(String s) throws ParseException, AtomSetException {
 		this.addAlternativePreference(DlgpDefeasibleParser.parseAlternativePreference(s));
@@ -210,6 +215,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Parses and adds a strict rule to the set of strict rules.
 	 * @param s a string representing a strict rule
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addStrictRule(String s) throws ParseException, AtomSetException {
 		this.addStrictRule(DlgpDefeasibleParser.parseRule(s));
@@ -224,6 +231,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Parses and adds a defeasible rule to the set of defeasible rules.
 	 * @param s a string representing a defeasible rule
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addDefeasibleRule(String s) throws ParseException, AtomSetException {
 		this.addDefeasibleRule(DlgpDefeasibleParser.parseDefeasibleRule(s));
@@ -238,6 +247,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Parses and adds a defeater rule to the set of defeater rules.
 	 * @param s a defeater rule
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addDefeaterRule(String s) throws ParseException, AtomSetException {
 		this.addDefeaterRule(DlgpDefeasibleParser.parseDefeaterRule(s));
@@ -252,6 +263,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Adds a Negative constraint rule to the set of negative constraints.
 	 * @param s a string representing a negative constraint rule
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addNegativeConstraint(String s) throws ParseException, AtomSetException {
 		this.addNegativeConstraint(DlgpDefeasibleParser.parseNegativeConstraint(s));
@@ -266,6 +279,8 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Parses and adds a Preference rule to the set of preference rules.
 	 * @param s a string representing a preference rule
+	 * @throws AtomSetException in case there is a problem with the atomset
+	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addPreferenceRule(String s) throws ParseException, AtomSetException {
 		this.addStrictRule(DlgpDefeasibleParser.parsePreferenceRule(s));
@@ -274,7 +289,7 @@ public class DefeasibleKnowledgeBase {
 
 	/**
 	 * Parses objects (e.g. atom, rule, etc.) from a reader and adds it to the knowledge base.
-	 * @param reader
+	 * @param reader a reader
 	 * @throws ParseException * @throws ParseException if input format error.
 	 * @throws AtomSetException if the structure used to store atoms throws an error.
 	 */
