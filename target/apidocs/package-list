@@ -1,0 +1,5 @@
+fr.lirmm.graphik.graal.defeasible.core
+fr.lirmm.graphik.graal.defeasible.core.atoms
+fr.lirmm.graphik.graal.defeasible.core.io
+fr.lirmm.graphik.graal.defeasible.core.preferences
+fr.lirmm.graphik.graal.defeasible.core.rules
