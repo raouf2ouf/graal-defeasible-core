@@ -56,6 +56,11 @@ public class FlexibleAtom extends DefaultAtom {
 	}
 	
 
+	/**
+	 * Creates a 1 ary predicate with a constant
+	 * @param predicate a predicate
+	 * @param constant a constant
+	 */
 	public FlexibleAtom(Predicate predicate, Constant constant) {
 		super(predicate, constant);
 	}
