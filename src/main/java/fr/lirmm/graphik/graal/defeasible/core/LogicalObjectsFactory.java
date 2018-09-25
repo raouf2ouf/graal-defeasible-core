@@ -112,29 +112,56 @@ public class LogicalObjectsFactory {
 	public DefeaterRule createDefeaterRule(String label, LinkedListAtomSet body, LinkedListAtomSet head) {
 		return new DefeaterRule(label, body, head);
 	}
-	
+	/**
+	 * Creates a preference rule from a label, body, and head
+	 * @param label string representing the label of the rule
+	 * @param body a List of atoms representing the body
+	 * @param head a preference representing the head
+	 * @return a preference rule
+	 */
 	public PreferenceRule createPreferenceRule(String label, LinkedListAtomSet body, Preference head) {
 		return new PreferenceRule(label, body, head);
 	}
-	
+	/**
+	 * Creates a preference rule from a label, body, and head
+	 * @param label string representing the label of the rule
+	 * @param body a List of atoms representing the body
+	 * @param head a list containing the preference representing the head
+	 * @return a preference rule
+	 */
 	public PreferenceRule createPreferenceRule(String label, LinkedListAtomSet body, LinkedListAtomSet head) {
 		return new PreferenceRule(label, body, head);
 	}
 	
 	
 	
+	/**
+	 * Returns the TOP atom T
+	 * @return the top atom
+	 */
 	public Atom getTOPAtom() {
-		return new DefaultAtom(Predicate.TOP, DefaultTermFactory.instance().createConstant("true"));
+		return new FlexibleAtom(Predicate.TOP, DefaultTermFactory.instance().createConstant("true"));
 	}
 	
+	/**
+	 * Returns the predicate used for preference on rules
+	 * @return the predicate used for preference on rules
+	 */
 	public Predicate getRulePreferencePredicate() {
 		return RULE_PREFERENCE_PREDICATE;
 	}
-	
+	/**
+	 * Returns the predicate used for preference on alternatives
+	 * @return the predicate used for preference on alternatives
+	 */
 	public Predicate getAlternativePreferencePredicate() {
 		return ALTERNATIVE_PREFERENCE_PREDICATE;
 	}
 	
+	/**
+	 * Return a set of rules for computing the preference from transitivity
+	 * @return a set of transitive rules for computing preferences.
+	 */
 	public RuleSet getPreferenceTransitivityRules() {
 		RuleSet rules = new LinkedListRuleSet();
 		

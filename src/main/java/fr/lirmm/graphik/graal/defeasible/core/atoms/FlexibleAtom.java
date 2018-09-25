@@ -3,6 +3,7 @@ package fr.lirmm.graphik.graal.defeasible.core.atoms;
 import java.util.List;
 
 import fr.lirmm.graphik.graal.api.core.Atom;
+import fr.lirmm.graphik.graal.api.core.Constant;
 import fr.lirmm.graphik.graal.api.core.Predicate;
 import fr.lirmm.graphik.graal.api.core.Term;
 import fr.lirmm.graphik.graal.core.DefaultAtom;
@@ -54,6 +55,10 @@ public class FlexibleAtom extends DefaultAtom {
 		super(atom);
 	}
 	
+
+	public FlexibleAtom(Predicate predicate, Constant constant) {
+		super(predicate, constant);
+	}
 
 	/**
 	 * Displays the atom without the predicate arity
