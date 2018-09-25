@@ -1,12 +1,21 @@
 package fr.lirmm.graphik.graal.defeasible.core.preferences;
 
+import fr.lirmm.graphik.graal.api.core.Atom;
 import fr.lirmm.graphik.graal.api.core.Predicate;
 import fr.lirmm.graphik.graal.api.core.Term;
 import fr.lirmm.graphik.graal.defeasible.core.atoms.FlexibleAtom;
 
+/**
+ * @author hamhec
+ *
+ */
 @SuppressWarnings("serial")
 public abstract class Preference extends FlexibleAtom {
 		
+	
+	public Preference(Atom a) {
+		super(a);
+	}
 	
 	public Preference(Predicate predicate) {
 		super(predicate);
@@ -22,7 +31,15 @@ public abstract class Preference extends FlexibleAtom {
 		return this.getTerm(0).toString();
 	}
 	public String getInferior() {
-		return this.getTerm(0).toString();
+		return this.getTerm(1).toString();
 	}
 	
+	/**
+	 * Returns a string in the form sup > inf
+	 * @return string sup > inf
+	 */
+	public String stringify() {
+		String str = this.getSuperior() + " > " + this.getInferior();
+		return str;
+	}
 }

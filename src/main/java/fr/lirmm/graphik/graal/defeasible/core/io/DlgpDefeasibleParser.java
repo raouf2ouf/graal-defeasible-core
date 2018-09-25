@@ -70,6 +70,7 @@ import fr.lirmm.graphik.graal.defeasible.core.preferences.Preference;
 import fr.lirmm.graphik.graal.defeasible.core.preferences.RulePreference;
 import fr.lirmm.graphik.graal.defeasible.core.rules.DefeasibleRule;
 import fr.lirmm.graphik.graal.defeasible.core.rules.DefeaterRule;
+import fr.lirmm.graphik.graal.defeasible.core.rules.PreferenceRule;
 import fr.lirmm.graphik.graal.io.dlp.Directive;
 import fr.lirmm.graphik.util.Prefix;
 import fr.lirmm.graphik.util.stream.AbstractCloseableIterator;
@@ -225,6 +226,14 @@ public final class DlgpDefeasibleParser extends AbstractCloseableIterator<Object
 	public static DefeaterRule parseDefeaterRule(String s) throws ParseException {
 		try {
 			return (DefeaterRule) parse(s);
+		} catch (ClassCastException e) {
+			throw new DlgpParseException("Wrong object type.", e);
+		}
+	}
+	
+	public static PreferenceRule parsePreferenceRule(String s) throws ParseException {
+		try {
+			return (PreferenceRule) parse(s);
 		} catch (ClassCastException e) {
 			throw new DlgpParseException("Wrong object type.", e);
 		}
