@@ -11,6 +11,7 @@ import fr.lirmm.graphik.graal.api.forward_chaining.Chase;
 import fr.lirmm.graphik.graal.api.forward_chaining.ChaseException;
 import fr.lirmm.graphik.graal.core.atomset.LinkedListAtomSet;
 import fr.lirmm.graphik.graal.defeasible.core.LogicalObjectsFactory;
+import fr.lirmm.graphik.graal.defeasible.core.preferences.Preference.Status;
 import fr.lirmm.graphik.graal.forward_chaining.BasicChase;
 import fr.lirmm.graphik.util.stream.CloseableIterator;
 import fr.lirmm.graphik.util.stream.IteratorException;
@@ -36,6 +37,19 @@ public class PreferenceSet extends HashMap<String,Preference> { // everypreferen
 			}
 		}
 		return prefs;
+	}
+	
+	public Status preferenceStatus(String label1, String label2) {
+		boolean isSuperior = this.containsKey(label1 + " > " + label2);
+		boolean isInferior = this.containsKey(label2 + " > " + label1);
+		
+		if(isSuperior && !isInferior) {
+			return Status.SUPERIOR;
+		} else if(isInferior && !isSuperior) {
+			return Status.INFERIOR;
+		} else {
+			return Status.EQUAL;
+		}
 	}
 	
 	// TODO: can be optimized by only adding the new preferences.

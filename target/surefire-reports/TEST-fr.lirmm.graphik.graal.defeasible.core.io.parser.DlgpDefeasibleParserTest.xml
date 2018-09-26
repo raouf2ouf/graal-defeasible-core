@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="21" failures="0" name="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" time="0.062" errors="0" skipped="0">
+<testsuite tests="21" failures="0" name="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" time="0.066" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/amd64"/>
@@ -32,6 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="/home/hamhec/.m2/repository"/>
     <property name="os.version" value="4.14.30-1-MANJARO"/>
     <property name="library.jansi.path" value="/opt/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/hamhec"/>
@@ -44,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-openjdk/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -D maven.repo.local=/home/hamhec/.m2/repository -s /tmp/release-settings3125832243976298158.xml clean verify"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,25 +62,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnPreferenceRule2" time="0.047"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseRuleLabel" time="0"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnPreferenceRule2" time="0.045"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseRuleLabel" time="0.003"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnStrictRule2" time="0"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRule2" time="0.001"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnAtom" time="0.004"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeaterRule" time="0.001"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRule2" time="0.003"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnAtom" time="0.003"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeaterRule" time="0.002"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeaterRule2" time="0.001"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeaterRuleWithEmptyBody2" time="0"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseRulePreferenceBetweenConstants" time="0"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeaterRuleWithEmptyBody" time="0"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRuleWithEmptyBody" time="0"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnStrictRule" time="0"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldThrowParseExceptionAtom1" time="0.001"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldThrowParseExceptionAtom2" time="0.001"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRule" time="0.001"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnStrictRule" time="0.001"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldThrowParseExceptionAtom1" time="0.002"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldThrowParseExceptionAtom2" time="0"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRule" time="0"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseAlternativePreferenceBetweenConstants" time="0.001"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnAtomSet" time="0.003"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRuleWithEmptyBody2" time="0"/>
-  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseAlternativePreferenceBetweenConstantsAndVariables" time="0"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnAtomSet" time="0.002"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnDefeasibleRuleWithEmptyBody2" time="0.001"/>
+  <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParseAlternativePreferenceBetweenConstantsAndVariables" time="0.001"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldParsePreferenceWithLabel" time="0.001"/>
   <testcase classname="fr.lirmm.graphik.graal.defeasible.core.io.parser.DlgpDefeasibleParserTest" name="ShouldReturnPreferenceRule" time="0"/>
 </testsuite>

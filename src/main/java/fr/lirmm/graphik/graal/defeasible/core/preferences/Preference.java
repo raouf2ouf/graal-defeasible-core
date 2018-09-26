@@ -11,7 +11,10 @@ import fr.lirmm.graphik.graal.defeasible.core.atoms.FlexibleAtom;
  */
 @SuppressWarnings("serial")
 public abstract class Preference extends FlexibleAtom {
-		
+	
+	public static enum Status {
+		SUPERIOR, INFERIOR, EQUAL
+	}
 	
 	public Preference(Atom a) {
 		super(a);
