@@ -1,7 +1,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.lirmm.graphik/graal-defeasible-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.lirmm.graphik/graal-defeasible-core)
 
 # Graal Defeasible Core
-This is the parser module for Graal, it can parse strict, defeasible, and defeater rules along with preferences on rules and on alternatives using DLGP fromat. 
+This is the parser module for Defeasible Datalog+-, it can parse strict, defeasible, and defeater (existential) rules along with preferences on rules and on alternatives using DLGP fromat.
 
 ## Getting Started
 You can either import this module using Maven Central (recommended). Add the following to your pom.xml:
