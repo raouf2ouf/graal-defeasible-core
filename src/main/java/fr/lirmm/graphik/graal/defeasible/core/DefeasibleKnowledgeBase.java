@@ -141,6 +141,7 @@ public class DefeasibleKnowledgeBase {
 		rules.addAll(this.strictRules.iterator());
 		rules.addAll(this.defeasibleRules.iterator());
 		rules.addAll(this.defeaterRules.iterator());
+		rules.addAll(this.preferenceRules.iterator());
 		return rules;
 	}
 	
@@ -188,9 +189,11 @@ public class DefeasibleKnowledgeBase {
 	/**
 	 * Adds a preference on alternatives to the set of preferences
 	 * @param pref a preference on alternatives
+	 * @throws AtomSetException 
 	 */
-	public void addAlternativePreference(AlternativePreference pref) {
+	public void addAlternativePreference(AlternativePreference pref) throws AtomSetException {
 		this.alternativePreferences.add(pref);
+		this.addFact(pref);
 	}
 	/**
 	 * Parses and adds a preference on alternatives to the set of preferences
@@ -333,7 +336,7 @@ public class DefeasibleKnowledgeBase {
 	 * @param ruleApplier a rule applier
 	 * @throws ChaseException if the chase throws an error
 	 */
-	public void staturate(RuleApplier<Rule, AtomSet> ruleApplier) throws ChaseException {
+	public void saturate(RuleApplier<Rule, AtomSet> ruleApplier) throws ChaseException {
 		Chase chase = new SccChase<AtomSet>(this.getRules().iterator(), this.saturatedFacts, ruleApplier);
 		chase.execute();
 	}

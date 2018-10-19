@@ -3,12 +3,14 @@ package fr.lirmm.graphik.graal.defeasible.core;
 import java.util.List;
 
 import fr.lirmm.graphik.graal.api.core.Atom;
+import fr.lirmm.graphik.graal.api.core.AtomSet;
 import fr.lirmm.graphik.graal.api.core.Predicate;
 import fr.lirmm.graphik.graal.api.core.Rule;
 import fr.lirmm.graphik.graal.api.core.RuleSet;
 import fr.lirmm.graphik.graal.api.core.Term;
 import fr.lirmm.graphik.graal.api.io.ParseException;
 import fr.lirmm.graphik.graal.core.DefaultAtom;
+import fr.lirmm.graphik.graal.core.DefaultNegativeConstraint;
 import fr.lirmm.graphik.graal.core.atomset.LinkedListAtomSet;
 import fr.lirmm.graphik.graal.core.ruleset.LinkedListRuleSet;
 import fr.lirmm.graphik.graal.core.term.DefaultTermFactory;
@@ -185,6 +187,27 @@ public class LogicalObjectsFactory {
 			
 			rules.add(r);
 		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return rules;
+	}
+	
+	public RuleSet getNegativeConstraintsOnAlternativePreferences() {
+		RuleSet rules = new LinkedListRuleSet();
+		
+		AlternativePreference p1;
+		try {
+			p1 = DlgpDefeasibleParser.parseAlternativePreference("X " + ALTERNATIVE_PREFERENCE_SYMBOL + " Y .");
+		
+			AlternativePreference p2 = DlgpDefeasibleParser.parseAlternativePreference("Y " + ALTERNATIVE_PREFERENCE_SYMBOL + " X .");
+			AtomSet body = new LinkedListAtomSet();
+			body.add(p1);
+			body.add(p2);
+			Rule r = new DefaultNegativeConstraint(body.iterator());
+			
+			rules.add(r);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

@@ -22,7 +22,7 @@ public class PreferenceSet extends HashMap<String,Preference> { // everypreferen
 	private static RuleSet transitivityRules = LogicalObjectsFactory.instance().getPreferenceTransitivityRules();
 	
 	public PreferenceSet add(Preference pref) {
-		this.put(pref.stringify(), pref);
+		this.put(pref.toString(), pref);
 		return this;
 	}
 	
