@@ -62,7 +62,7 @@ public class DlgpDefeasibleParserTest {
 	@Test
 	public void ShouldParseAlternativePreferenceBetweenConstants() throws ParseException {
 		AlternativePreference pref = DlgpDefeasibleParser.parseAlternativePreference("entrecote > indien.");
-		Assert.assertEquals(LogicalObjectsFactory.instance().getAlternativePreferencePredicate().getIdentifier().toString() + "(entrecote,indien)", pref.toString());
+		Assert.assertEquals("entrecote > indien", pref.toString());
 	}
 	
 	@Test
@@ -73,13 +73,13 @@ public class DlgpDefeasibleParserTest {
 	@Test
 	public void ShouldParseRulePreferenceBetweenConstants() throws ParseException {
 		RulePreference pref = DlgpDefeasibleParser.parseRulePreference("r1 >> r2.");
-		Assert.assertEquals(LogicalObjectsFactory.instance().getRulePreferencePredicate().getIdentifier().toString() + "(r1,r2)", pref.toString());
+		Assert.assertEquals("r1 > r2", pref.toString());
 	}
 	
 	@Test
 	public void ShouldParsePreferenceWithLabel() throws ParseException {
 		RulePreference pref = DlgpDefeasibleParser.parseRulePreference("[somelabel] r1 >> r2.");
-		Assert.assertEquals(LogicalObjectsFactory.instance().getRulePreferencePredicate().getIdentifier().toString() + "(r1,r2)", pref.toString());
+		Assert.assertEquals("r1 > r2", pref.toString());
 	}
 	
 
@@ -152,14 +152,12 @@ public class DlgpDefeasibleParserTest {
 	public void ShouldReturnPreferenceRule() throws ParseException {
 		String ruleStr = "X > Y :- p(X), q(Y).";
 		Rule rule = DlgpDefeasibleParser.parseRule(ruleStr);
-		Assert.assertEquals(LogicalObjectsFactory.instance().getAlternativePreferencePredicate().getIdentifier().toString() + "(X,Y)", 
-				rule.getHead().iterator().next().toString());
+		Assert.assertTrue(rule.getHead().iterator().next() instanceof AlternativePreference);
 	}
 	@Test
 	public void ShouldReturnPreferenceRule2() throws ParseException {
 		String ruleStr = "X > Y <- p(X), q(Y).";
 		Rule rule = DlgpDefeasibleParser.parseRule(ruleStr);
-		Assert.assertEquals(LogicalObjectsFactory.instance().getAlternativePreferencePredicate().getIdentifier().toString() + "(X,Y)", 
-				rule.getHead().iterator().next().toString());
+		Assert.assertTrue(rule.getHead().iterator().next() instanceof AlternativePreference);
 	}
 }
