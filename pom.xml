@@ -3,7 +3,7 @@
 
   <groupId>fr.lirmm.graphik</groupId>
   <artifactId>graal-defeasible-core</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
 
   <name>Graal Defeasible Core</name>
@@ -38,7 +38,7 @@
   	<connection>scm:git:https://github.com/hamhec/graal-defeasible-core.git</connection>
   	<developerConnection>scm:git:https://github.com/hamhec/graal-defeasible-core.git</developerConnection>
   	<url>https://github.com/hamhec/graal-defeasible-core.git</url>
-    <tag>graal-defeasible-core-0.0.3</tag>
+    <tag>graal-defeasible-core-0.0.4</tag>
   </scm>
 	
   <distributionManagement>
