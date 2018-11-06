@@ -60,4 +60,48 @@ public class StrictRule extends DefaultRule {
 	public StrictRule(Rule rule) {
 		super(rule);
 	}
+	
+	
+	/**
+     * Verifies if two StrictRules are equivalent or not.
+     * @param obj the object to test
+     * @return true if the objects are equal, false otherwise.
+     */
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) { return true; }
+        if (obj == null) { return false; }
+        if (!(obj instanceof StrictRule)) { return false; }
+        
+        StrictRule other = (StrictRule) obj;
+        // They must have the same body
+        CloseableIteratorWithoutException<Atom> itBodyOther = other.getBody().iterator();
+        while(itBodyOther.hasNext()) {
+        	if(!this.getBody().contains(itBodyOther.next())) {
+        		return false;
+        	}
+        }
+        CloseableIteratorWithoutException<Atom> itBodyMe = this.getBody().iterator();
+        while(itBodyMe.hasNext()) {
+        	if(!other.getBody().contains(itBodyMe.next())) {
+        		return false;
+        	}
+        }
+        
+        // They must have the same head
+        CloseableIteratorWithoutException<Atom> itHeadOther = other.getHead().iterator();
+        while(itHeadOther.hasNext()) {
+        	if(!this.getHead().contains(itHeadOther.next())) {
+        		return false;
+        	}
+        }
+        CloseableIteratorWithoutException<Atom> itHeadMe = this.getHead().iterator();
+        while(itHeadMe.hasNext()) {
+        	if(!other.getHead().contains(itHeadMe.next())) {
+        		return false;
+        	}
+        }
+       
+        return true;
+    }
 }

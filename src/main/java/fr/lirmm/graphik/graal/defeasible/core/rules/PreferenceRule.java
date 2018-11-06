@@ -1,9 +1,11 @@
 package fr.lirmm.graphik.graal.defeasible.core.rules;
 
+import fr.lirmm.graphik.graal.api.core.Atom;
 import fr.lirmm.graphik.graal.api.core.InMemoryAtomSet;
 import fr.lirmm.graphik.graal.core.DefaultRule;
 import fr.lirmm.graphik.graal.core.atomset.LinkedListAtomSet;
 import fr.lirmm.graphik.graal.defeasible.core.preferences.Preference;
+import fr.lirmm.graphik.util.stream.CloseableIteratorWithoutException;
 
 public class PreferenceRule extends DefaultRule {
 	
@@ -31,4 +33,47 @@ public class PreferenceRule extends DefaultRule {
 	public PreferenceRule(String label, InMemoryAtomSet body, InMemoryAtomSet head) {
 		super(label, body, head);
 	}
+	
+	/**
+     * Verifies if two PreferenceRules are equivalent or not.
+     * @param obj the object to test
+     * @return true if the objects are equal, false otherwise.
+     */
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) { return true; }
+        if (obj == null) { return false; }
+        if (!(obj instanceof PreferenceRule)) { return false; }
+        
+        PreferenceRule other = (PreferenceRule) obj;
+        // They must have the same body
+        CloseableIteratorWithoutException<Atom> itBodyOther = other.getBody().iterator();
+        while(itBodyOther.hasNext()) {
+        	if(!this.getBody().contains(itBodyOther.next())) {
+        		return false;
+        	}
+        }
+        CloseableIteratorWithoutException<Atom> itBodyMe = this.getBody().iterator();
+        while(itBodyMe.hasNext()) {
+        	if(!other.getBody().contains(itBodyMe.next())) {
+        		return false;
+        	}
+        }
+        
+        // They must have the same head
+        CloseableIteratorWithoutException<Atom> itHeadOther = other.getHead().iterator();
+        while(itHeadOther.hasNext()) {
+        	if(!this.getHead().contains(itHeadOther.next())) {
+        		return false;
+        	}
+        }
+        CloseableIteratorWithoutException<Atom> itHeadMe = this.getHead().iterator();
+        while(itHeadMe.hasNext()) {
+        	if(!other.getHead().contains(itHeadMe.next())) {
+        		return false;
+        	}
+        }
+       
+        return true;
+    }
 }
