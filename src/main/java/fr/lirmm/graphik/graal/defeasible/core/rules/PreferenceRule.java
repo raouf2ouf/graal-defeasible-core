@@ -1,13 +1,17 @@
 package fr.lirmm.graphik.graal.defeasible.core.rules;
 
+import java.util.HashSet;
+
 import fr.lirmm.graphik.graal.api.core.Atom;
 import fr.lirmm.graphik.graal.api.core.InMemoryAtomSet;
 import fr.lirmm.graphik.graal.core.DefaultRule;
 import fr.lirmm.graphik.graal.core.atomset.LinkedListAtomSet;
+import fr.lirmm.graphik.graal.defeasible.core.Authorable;
 import fr.lirmm.graphik.graal.defeasible.core.preferences.Preference;
 import fr.lirmm.graphik.util.stream.CloseableIteratorWithoutException;
 
-public class PreferenceRule extends DefaultRule {
+public class PreferenceRule extends DefaultRule implements Authorable {
+	private HashSet<String> authors;
 	
 	/**
 	 * Constructs a labeled preference rule from an atomset body and a preference
@@ -32,6 +36,16 @@ public class PreferenceRule extends DefaultRule {
 	 */
 	public PreferenceRule(String label, InMemoryAtomSet body, InMemoryAtomSet head) {
 		super(label, body, head);
+	}
+	
+	
+	
+	public HashSet<String> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(HashSet<String> authors) {
+		this.authors = authors;
 	}
 	
 	/**

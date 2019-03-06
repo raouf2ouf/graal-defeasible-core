@@ -1,12 +1,16 @@
 package fr.lirmm.graphik.graal.defeasible.core.rules;
 
+import java.util.HashSet;
+
 import fr.lirmm.graphik.graal.api.core.Atom;
 import fr.lirmm.graphik.graal.api.core.InMemoryAtomSet;
 import fr.lirmm.graphik.graal.api.core.Rule;
 import fr.lirmm.graphik.graal.core.DefaultRule;
+import fr.lirmm.graphik.graal.defeasible.core.Authorable;
 import fr.lirmm.graphik.util.stream.CloseableIteratorWithoutException;
 
-public class DefeasibleRule extends DefaultRule {
+public class DefeasibleRule extends DefaultRule implements Authorable {
+	private HashSet<String> authors;
 	
 	/**
 	 * Constructs an empty defeasible rule
@@ -61,6 +65,14 @@ public class DefeasibleRule extends DefaultRule {
 		super(rule);
 	}
 	
+	
+	public HashSet<String> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(HashSet<String> authors) {
+		this.authors = authors;
+	}
 	
 	/**
      * Verifies if two DefeasibleRule are equivalent or not.

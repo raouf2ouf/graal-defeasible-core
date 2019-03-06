@@ -2,6 +2,7 @@ package fr.lirmm.graphik.graal.defeasible.core;
 
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.HashSet;
 
 import fr.lirmm.graphik.graal.api.core.AtomSet;
 import fr.lirmm.graphik.graal.api.core.AtomSetException;
@@ -22,10 +23,12 @@ import fr.lirmm.graphik.graal.defeasible.core.preferences.RulePreference;
 import fr.lirmm.graphik.graal.defeasible.core.rules.DefeasibleRule;
 import fr.lirmm.graphik.graal.defeasible.core.rules.DefeaterRule;
 import fr.lirmm.graphik.graal.defeasible.core.rules.PreferenceRule;
+import fr.lirmm.graphik.graal.defeasible.core.rules.StrictRule;
 import fr.lirmm.graphik.graal.forward_chaining.BasicChase;
 import fr.lirmm.graphik.graal.forward_chaining.SccChase;
 
 public class DefeasibleKnowledgeBase {
+	protected String author;
 	
 	protected RuleSet strictRules;
 	protected RuleSet defeasibleRules;
@@ -60,9 +63,20 @@ public class DefeasibleKnowledgeBase {
 		this.alternativePreferences = new PreferenceSet();
 	}
 	
+	public DefeasibleKnowledgeBase(String author) {
+		this();
+		this.author = author;
+	}
 	//--------------------------------------------
 	// Getters and Setters
 	//--------------------------------------------
+	public String getAuthor() {
+		return this.author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 	
 	/* Facts */
 	/**
@@ -76,7 +90,7 @@ public class DefeasibleKnowledgeBase {
 	 * Returns the saturated set of facts
 	 * @return the saturated set of facts
 	 */
-	public AtomSet getStaturatedFacts() {
+	public AtomSet getSaturatedFacts() {
 		return this.saturatedFacts;
 	}
 	
@@ -156,6 +170,10 @@ public class DefeasibleKnowledgeBase {
 	 * @throws AtomSetException in case there is a problem with the atomset
 	 */
 	public void addFact(FlexibleAtom a) throws AtomSetException {
+		// Sign authorship
+		if(null == a.getAuthors()) a.setAuthors(new HashSet<String>());
+		if(null != this.author) a.getAuthors().add(this.author);
+		
 		this.facts.add(a);
 		this.saturatedFacts.add(a);
 	}
@@ -175,6 +193,10 @@ public class DefeasibleKnowledgeBase {
 	 * @param pref a preference on rules
 	 */
 	public void addRulePreference(RulePreference pref) {
+		// Sign authorship
+		if(null == pref.getAuthors()) pref.setAuthors(new HashSet<String>());
+		if(null != this.author) pref.getAuthors().add(this.author);
+		
 		this.rulePreferences.add(pref);
 	}
 	/**
@@ -192,6 +214,10 @@ public class DefeasibleKnowledgeBase {
 	 * @throws AtomSetException 
 	 */
 	public void addAlternativePreference(AlternativePreference pref) throws AtomSetException {
+		// Sign authorship
+		if(null == pref.getAuthors()) pref.setAuthors(new HashSet<String>());
+		if(null != this.author) pref.getAuthors().add(this.author);
+		
 		this.alternativePreferences.add(pref);
 		this.addFact(pref);
 	}
@@ -212,7 +238,11 @@ public class DefeasibleKnowledgeBase {
 	 * Adds a strict rule to the set of strict rules.
 	 * @param r a strict rule
 	 */
-	public void addStrictRule(Rule r) {
+	public void addStrictRule(StrictRule r) {
+		// Sign authorship
+		if(null == r.getAuthors()) r.setAuthors(new HashSet<String>());
+		if(null != this.author) r.getAuthors().add(this.author);
+		
 		this.strictRules.add(r);
 	}
 	/**
@@ -222,13 +252,17 @@ public class DefeasibleKnowledgeBase {
 	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addStrictRule(String s) throws ParseException, AtomSetException {
-		this.addStrictRule(DlgpDefeasibleParser.parseRule(s));
+		this.addStrictRule((StrictRule) DlgpDefeasibleParser.parseRule(s));
 	}
 	/**
 	 * Adds a defeasible rule to the set of defeasible rules.
 	 * @param r a defeasible rule
 	 */
 	public void addDefeasibleRule(DefeasibleRule r) {
+		// Sign authorship
+		if(null == r.getAuthors()) r.setAuthors(new HashSet<String>());
+		if(null != this.author) r.getAuthors().add(this.author);
+				
 		this.defeasibleRules.add(r);
 	}
 	/**
@@ -245,6 +279,10 @@ public class DefeasibleKnowledgeBase {
 	 * @param r a defeater rule
 	 */
 	public void addDefeaterRule(DefeaterRule r) {
+		// Sign authorship
+		if(null == r.getAuthors()) r.setAuthors(new HashSet<String>());
+		if(null != this.author) r.getAuthors().add(this.author);
+				
 		this.defeaterRules.add(r);
 	}
 	/**
@@ -277,6 +315,10 @@ public class DefeasibleKnowledgeBase {
 	 * @param r a preference rule
 	 */
 	public void addPreferenceRule(PreferenceRule r) {
+		// Sign authorship
+		if(null == r.getAuthors()) r.setAuthors(new HashSet<String>());
+		if(null != this.author) r.getAuthors().add(this.author);
+				
 		this.preferenceRules.add(r);
 	}
 	/**
@@ -286,7 +328,7 @@ public class DefeasibleKnowledgeBase {
 	 * @throws ParseException in case something went wrong with the parsing
 	 */
 	public void addPreferenceRule(String s) throws ParseException, AtomSetException {
-		this.addStrictRule(DlgpDefeasibleParser.parsePreferenceRule(s));
+		this.addPreferenceRule(DlgpDefeasibleParser.parsePreferenceRule(s));
 	}
 	
 
@@ -309,7 +351,7 @@ public class DefeasibleKnowledgeBase {
 			} else if (o instanceof PreferenceRule) {
 				this.addPreferenceRule((PreferenceRule) o);
 			} else if (o instanceof Rule) {
-				this.addStrictRule((Rule) o);
+				this.addStrictRule((StrictRule) o);
 			} else if (o instanceof RulePreference) {
 				this.addRulePreference((RulePreference) o);
 			} else if (o instanceof AlternativePreference) {

@@ -1,5 +1,6 @@
 package fr.lirmm.graphik.graal.defeasible.core.atoms;
 
+import java.util.HashSet;
 import java.util.List;
 
 import fr.lirmm.graphik.graal.api.core.Atom;
@@ -7,9 +8,11 @@ import fr.lirmm.graphik.graal.api.core.Constant;
 import fr.lirmm.graphik.graal.api.core.Predicate;
 import fr.lirmm.graphik.graal.api.core.Term;
 import fr.lirmm.graphik.graal.core.DefaultAtom;
+import fr.lirmm.graphik.graal.defeasible.core.Authorable;
 
 @SuppressWarnings("serial") // We will not need to serialize atoms
-public class FlexibleAtom extends DefaultAtom {
+public class FlexibleAtom extends DefaultAtom implements Authorable {
+	private HashSet<String> authors;
 	
 	/**
 	 * Flexible Atom constructor from a predicate and an array of terms
@@ -63,6 +66,15 @@ public class FlexibleAtom extends DefaultAtom {
 	 */
 	public FlexibleAtom(Predicate predicate, Constant constant) {
 		super(predicate, constant);
+	}
+
+	
+	public HashSet<String> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(HashSet<String> authors) {
+		this.authors = authors;
 	}
 
 	/**
